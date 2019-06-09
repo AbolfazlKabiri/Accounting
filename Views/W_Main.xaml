@@ -1,0 +1,33 @@
+﻿<Window x:Class="Accounting.Views.W_Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Accounting.Views"
+        mc:Ignorable="d"
+        Title="W_Main" Height="750" Width="1024" Style="{StaticResource iransans}" Foreground="White" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#212121">
+    <Grid>
+        <StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" VerticalAlignment="Top">
+            <Border Width="150" Height="60" CornerRadius="10" Background="LightGreen" Margin="10,25,5,0" Cursor="Hand" Name="group" PreviewMouseLeftButtonDown="group_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource group}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Width="150" Height="60" CornerRadius="10" Background="LightCoral" Margin="20,25,5,0" Cursor="Hand" Name="kol" PreviewMouseLeftButtonDown="kol_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource kol}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Width="150" Height="60" CornerRadius="10" Background="Magenta" Margin="20,25,5,0" Cursor="Hand" Name="moin" PreviewMouseLeftButtonDown="moin_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource moin}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Width="150" Height="60" CornerRadius="10" Background="LightSeaGreen" Margin="20,25,5,0" Cursor="Hand" Name="tafsiliGroup" PreviewMouseLeftButtonDown="tafsiliGroup_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource tafsiligroup}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Width="150" Height="60" CornerRadius="10" Background="DarkGoldenrod" Margin="20,25,5,0" Cursor="Hand" Name="peopleGroup" PreviewMouseLeftButtonDown="peopleGroup_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource peoplegroup}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+            <Border Width="150" Height="60" CornerRadius="10" HorizontalAlignment="Right" Background="DarkSlateBlue" Margin="10,25,10,0" Cursor="Hand" Name="costCenter" PreviewMouseLeftButtonDown="costCenter_PreviewMouseLeftButtonDown">
+                <TextBlock Text="{StaticResource costCenter}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

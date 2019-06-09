@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Accounting.Views.Shared.WindowHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:Accounting.Views.Shared"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="1024" Style="{StaticResource iransans}" Background="#106EBE" MouseDown="WindowHeader_OnMouseDown" Foreground="White">
+    <Grid>
+        <TextBlock Name="txtTitle" Foreground="White" Text="{Binding Title}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button HorizontalAlignment="Right" BorderThickness="0"  BorderBrush="Transparent"  Background="Transparent" Click="ButtonBase_OnClick">
+            <fa:ImageAwesome Icon="Close"  Foreground="White"/>
+            </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="Accounting.Views.Shared.W_SelectorModal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Accounting.Views.Shared"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600" WindowStartupLocation="CenterScreen" Background="White" Style="{StaticResource iransans}">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBox Name="txtSearch" TextChanged="txtSearch_TextChanged" Margin="3,3,3,3" BorderThickness="0" Background="LightGray" VerticalContentAlignment="Center" TextAlignment="Right" Text="{StaticResource search}"/>
+            <fa:ImageAwesome Icon="Search" Foreground="Gray" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="425*"/>
+                <ColumnDefinition Width="167*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Name="dtSource" FlowDirection="RightToLeft" SelectionChanged="dtSource_SelectionChanged" CanUserAddRows="False" CanUserDeleteRows="False" Grid.ColumnSpan="2"/>
+
+
+        </Grid>
+        <Grid Grid.Row="2"  Name="selectionButtonArea">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Name="btnSelect" Content="{StaticResource selectButton}" Foreground="White" Margin="10,0,5,0" Width="80" Background="Green" Click="btnSelect_Click"/>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" Name="btnCancel" Content="{StaticResource cancel}"   Width="80" Click="btnCancel_Click"/>
+            </StackPanel>
+
+
+        </Grid>
+    </Grid>
+</Window>
