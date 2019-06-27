@@ -54,7 +54,12 @@ namespace Accounting.Views.Shared
                             dtSource.ItemsSource = result.Body;
                         }
                         break;
-                    default:
+                    case Models.Common.SelectorType.PeopleGroup:
+                         using (var controller = new Controllers.PeopleGroupController())
+                        {
+                            var result = controller.GetPeopleGroup();
+                            dtSource.ItemsSource = result.Body;
+                        }
                         break;
                 }
             }
@@ -110,7 +115,9 @@ namespace Accounting.Views.Shared
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            var list = (List<Models.TafsiliGroup>)dtSource.ItemsSource;
+            if(selectorType == Models.Common.SelectorType.TafsiliGroup)
+            {
+            var list =  (List<Models.TafsiliGroup>)dtSource.ItemsSource;
             selectedList.AddRange(
                     list.Where(c=> c.Selected == true).Select(c=> new Models.PublicResultModel {
 
@@ -119,6 +126,19 @@ namespace Accounting.Views.Shared
                         Code = c.Code
                     })
                 );
+            }
+            else if(selectorType == Models.Common.SelectorType.PeopleGroup)
+            {
+                var list =  (List<Models.PeopleGroup>)dtSource.ItemsSource;
+                 selectedList.AddRange(
+                 list.Where(c=> c.Selected == true).Select(c=> new Models.PublicResultModel {
+
+                        Id = c.Id,
+                        Title = c.Title,
+                        Code = c.Code
+                    })
+                );
+            }
             Close();
         }
 

@@ -57,7 +57,14 @@ namespace Accounting.Views.Shared
                              lblValue.Tag = selectedList.Select(c=> c.Id).ToList();
                         }
                          break;
-                    default:
+                    case Models.Common.SelectorType.PeopleGroup:
+                         modal = new W_SelectorModal(Models.Common.SelectorType.PeopleGroup, selectedList,true);
+                          modal.ShowDialog();
+                         if(selectedList.Count > 0)
+                         {
+                             lblValue.Content =string.Join(",", selectedList.Select(c=> c.Title).ToList());
+                             lblValue.Tag = selectedList.Select(c=> c.Id).ToList();
+                        }
                         break;
                 }
 

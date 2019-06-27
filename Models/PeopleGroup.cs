@@ -6,6 +6,7 @@ namespace Accounting.Models
 {
     public class PeopleGroup : IValidatableObject
     {
+        public bool Selected { get; set; }
         public int Id { get; set; }
         public string Code { get; set; }
         public string Title { get; set; }

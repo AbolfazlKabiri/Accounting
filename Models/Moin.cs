@@ -20,6 +20,7 @@ namespace Accounting.Models
         public bool IsDefault { get; set; }
         public string TafsiliGroupBindingString { get; set; }
         public string MoinMap { get; set; }
+        public bool IsPermanent { get; set; }
         public DataTable TafsiliGroupBinding { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

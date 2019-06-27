@@ -6,11 +6,16 @@
     <system:String x:Key="groupTitle">گروه حساب جدید</system:String>
     <system:String x:Key="code">كد :</system:String>
     <system:String x:Key="title">عنوان :</system:String>
+    <system:String x:Key="titleInDocument">عنوان در اسناد مکانیزه :</system:String>
     <system:String x:Key="nature">ماهيت :</system:String>
     <system:String x:Key="isDefault">حساب پيشفرض</system:String>
+    <system:String x:Key="isTemprory">حساب موقت</system:String>
+    <system:String x:Key="isInActive">حساب غیرفعال</system:String>
+    <system:String x:Key="isCostCenter">مرکز هزینه</system:String>
     <system:String x:Key="editable">قابل ویرایش</system:String>
     <system:String x:Key="save">ثبت</system:String>
     <system:String x:Key="update">ويرايش</system:String>
+    <system:String x:Key="moreDetailes">جزئیات بیشتر</system:String>
     <system:String x:Key="remove">حذف</system:String>
     <system:String x:Key="cancel">انصراف</system:String>
     <system:String x:Key="removeAccountWarning">آيا از حذف اين حساب مطمئن هستيد ؟ اين عمليات غيرقابل بازگشت خواهد بود</system:String>
@@ -29,12 +34,25 @@
     <system:String x:Key="moin">مدیریت حساب های معین</system:String>
     <system:String x:Key="tafsiligroup">مدیریت گروه های تفصیل</system:String>
     <system:String x:Key="peoplegroup">مدیریت گروه های اشخاص</system:String>
+    <system:String x:Key="peopleGroupTitle">گروه اشخاص :</system:String>
+    <system:String x:Key="entityTypeTitle">نوع حساب تفصیل :</system:String>
     <system:String x:Key="costCenter">مدیریت مراکز هزینه</system:String>
+    <system:String x:Key="tel">تلفن :</system:String>
+    <system:String x:Key="mobile">موبایل :</system:String>
+    <system:String x:Key="address">ادرس :</system:String>
+    <system:String x:Key="nationCode">کد ملی :</system:String>
+    <system:String x:Key="economyCode">کد اقتصادی :</system:String>
+    <system:String x:Key="maxCredit">سقف اعتباری :</system:String>
+    <system:String x:Key="accType">نوع حساب :</system:String>
+    <system:String x:Key="true">حقیقی</system:String>
+    <system:String x:Key="legal">حقوقی</system:String>
+    <system:String x:Key="flow">گردش</system:String>
     <!--Group Validation-->
     <system:String x:Key="validation_codeIsEmpty">وارد كردن كد حساب الزامي مي باشد</system:String>
     <system:String x:Key="validation_titleIsEmpty">وارد كردن عنوان حساب الزامي مي باشد</system:String>
     <system:String x:Key="validation_invalidNatureId">ماهيت حساب مشخص نشده است</system:String>
     <system:String x:Key="validation_invalidGroupId">گروه حستب مشخص نشده است</system:String>
+    <system:String x:Key="validation_invalidEntityTypeId">نوع موجودیت حساب مشخص نشده است</system:String>
     <!--Group Validation-->
     <system:String x:Key="validationPeople_codeIsEmpty">وارد كردن كد الزامي مي باشد</system:String>
     <system:String x:Key="validationPeople_titleIsEmpty">وارد كردن عنوان الزامي مي باشد</system:String>

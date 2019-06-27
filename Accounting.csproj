@@ -76,11 +76,13 @@
     <Compile Include="Controllers\MoinController.cs" />
     <Compile Include="Controllers\NatureController.cs" />
     <Compile Include="Controllers\PeopleGroupController.cs" />
+    <Compile Include="Controllers\TafsilController.cs" />
     <Compile Include="Controllers\TafsiliGroupController.cs" />
     <Compile Include="Models\ActionResultModelBinding.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\CostCenter.cs" />
     <Compile Include="Models\CustomColumnHeadersProperty.cs" />
+    <Compile Include="Models\EntityModelBinding.cs" />
     <Compile Include="Models\HiddenAttribute.cs" />
     <Compile Include="Models\Kol.cs" />
     <Compile Include="Models\Moin.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Models\PeopleGroup.cs" />
     <Compile Include="Models\PublicResultModel.cs" />
     <Compile Include="Models\SelectResultModelBinding.cs" />
+    <Compile Include="Models\Tafsil.cs" />
     <Compile Include="Models\TafsiliGroup.cs" />
     <Compile Include="Views\Shared\PagingBar.xaml.cs">
       <DependentUpon>PagingBar.xaml</DependentUpon>
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="Views\W_PeopleGroup.xaml.cs">
       <DependentUpon>W_PeopleGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\W_TafsilAccount.xaml.cs">
+      <DependentUpon>W_TafsilAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\W_TafsiliGroupAccount.xaml.cs">
       <DependentUpon>W_TafsiliGroupAccount.xaml</DependentUpon>
@@ -240,6 +246,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\W_PeopleGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\W_TafsilAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

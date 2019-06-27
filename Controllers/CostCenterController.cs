@@ -52,7 +52,7 @@ namespace Accounting.Controllers
         /// تعداد ركوردهاي مدنظر براي مشاهده در خروجي
         /// </param>
         /// <returns></returns>
-        public Models.SelectResultModelBinding<Models.PeopleGroup> GetCostCenter(short _pageNo = 0,short _seedNumber = 10,string search = null)
+        public Models.SelectResultModelBinding<Models.CostCenter> GetCostCenter(short _pageNo = 0,short _seedNumber = 10,string search = null)
         {
             try
             {
@@ -63,9 +63,9 @@ namespace Accounting.Controllers
                     repo.cmd.Parameters.AddWithValue("@search", search);
                     repo.ExecuteAdapter();
                     var info = repo.ds.Tables[0].AsEnumerable();
-                    return new Models.SelectResultModelBinding<Models.PeopleGroup>
+                    return new Models.SelectResultModelBinding<Models.CostCenter>
                     {
-                        Body = info.Select(i => new Models.PeopleGroup
+                        Body = info.Select(i => new Models.CostCenter
                         {
                             Id = Convert.ToInt32(i.Field<object>("id")),
                             Code = Convert.ToString(i.Field<object>("code")),
@@ -93,7 +93,7 @@ namespace Accounting.Controllers
         {
             try
             {
-                using (var repo = new Repository.Repository(this, "usp_updatetCostCenter"))
+                using (var repo = new Repository.Repository(this, "usp_updateCostCenter"))
                 {
                     repo.cmd.Parameters.AddWithValue("@id", groupModel.Id);
                     repo.cmd.Parameters.AddWithValue("@code", groupModel.Code);

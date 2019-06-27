@@ -26,6 +26,7 @@ namespace Accounting.Controllers
                     repo.cmd.Parameters.AddWithValue("@title", model.Title);
                     repo.cmd.Parameters.AddWithValue("@natureId", model.NatureId);
                     repo.cmd.Parameters.AddWithValue("@isDefault", model.IsDefault);
+                    repo.cmd.Parameters.AddWithValue("@isPermanent", model.IsPermanent);
                     repo.cmd.Parameters.AddWithValue("@kolId", model.KolId);
                     var param = repo.cmd.Parameters.AddWithValue("@tafiliGroupList",model.TafsiliGroupBinding);
                     param.SqlDbType = System.Data.SqlDbType.Structured;
@@ -113,6 +114,7 @@ namespace Accounting.Controllers
                     repo.cmd.Parameters.AddWithValue("@title", model.Title);
                     repo.cmd.Parameters.AddWithValue("@natureId", model.NatureId);
                     repo.cmd.Parameters.AddWithValue("@isDefault", model.IsDefault);
+                    repo.cmd.Parameters.AddWithValue("@isPermanent", model.IsPermanent);
                     repo.cmd.Parameters.AddWithValue("@kolId", model.KolId);
                     var param = repo.cmd.Parameters.AddWithValue("@tafiliGroupList",model.TafsiliGroupBinding);
                     param.SqlDbType = System.Data.SqlDbType.Structured;
@@ -134,7 +136,7 @@ namespace Accounting.Controllers
             }
         }
         /// <summary>
-        /// حذف يك حساب کل
+        /// حذف يك حساب معین
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

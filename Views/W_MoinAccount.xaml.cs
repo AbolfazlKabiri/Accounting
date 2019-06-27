@@ -17,7 +17,7 @@ namespace Accounting.Views
             InitializeComponent();
             kolSelector.Type = Models.Common.SelectorType.KolAccounts;
             tafsiliGroupSelector.Type = Models.Common.SelectorType.TafsiliGroup;
-         FillNatureComboBox();
+            FillNatureComboBox();
             GetMoinAccounts();
         }
         private void FillNatureComboBox()
@@ -75,6 +75,7 @@ namespace Accounting.Views
                     Title = txtTitle.Text,
                     NatureId = cmbNature.SelectedValue == null ? default(short) : (short)cmbNature.SelectedValue,
                     IsDefault = chkIsDefault.IsChecked.Value,
+                    IsPermanent = chkIsTemprory.IsChecked.Value ? false:true,
                     KolId = kolSelector.lblValue.Tag != null ? (int)((Tuple<long,string>) kolSelector.lblValue.Tag).Item1:0,
                     
                 };

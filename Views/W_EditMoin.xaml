@@ -44,7 +44,9 @@
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Label Content="{StaticResource nature}" Margin="40,0,3,0" VerticalAlignment="Center" />
                     <ComboBox VerticalAlignment="Center"  Name="cmbNature" Width="133"/>
-                    <CheckBox Content="{StaticResource isDefault}" VerticalAlignment="Center" Name="chkIsDefault" IsChecked="False" Margin="60,0,0,0"/>
+                    <CheckBox Content="{StaticResource isDefault}" VerticalAlignment="Center" Name="chkIsDefault" IsChecked="False" Margin="50,0,0,0"/>
+                    <CheckBox Content="{StaticResource isTemprory}" VerticalAlignment="Center" Name="chkIsTemprory" IsChecked="False" Margin="30,0,0,0"/>
+
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
                     <Button Content="{StaticResource save}" BorderThickness="0" Background="#388E3C" Foreground="White" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="80" Margin="30,0,0,2" Name="insertButton" Click="Button_Click"/>
