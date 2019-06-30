@@ -152,5 +152,55 @@ namespace Accounting.Controllers
                 };
             }
         }
+
+        /// <summary>
+        /// دريافت ليست حسابهای تفصیل
+        /// </summary>
+        /// <param name="_pageNo">
+        /// شماره صفحه 
+        /// </param>
+        /// <param name="_seedNumber">
+        /// تعداد ركوردهاي مدنظر براي مشاهده در خروجي
+        /// </param>
+        /// <returns></returns>
+        public Models.SelectResultModelBinding<Models.Tafsil> GetTafsilAccounts(short _pageNo = 0,short _seedNumber = 10,string search = null)
+        {
+            try
+            {
+                using (var repo = new Repository.Repository(this, "usp_getTafsilAccountList",true))
+                {
+                    pageNo = _pageNo;
+                    seedNumber = _seedNumber;
+                    
+                    repo.cmd.Parameters.AddWithValue("@search", search);
+                    repo.ExecuteAdapter();
+                    var info = repo.ds.Tables[0].AsEnumerable();
+                    var tafsiliGroupList = repo.ds.Tables[1].AsEnumerable();
+                    var peopleGroupList = repo.ds.Tables[2].AsEnumerable();
+                    return new Models.SelectResultModelBinding<Models.Tafsil>
+                    {
+                        Body = info.Select(i => new Models.Tafsil()
+                        {
+                            Id = Convert.ToInt32(i.Field<object>("id")),
+                            Code = Convert.ToString(i.Field<object>("code")),
+                            Title = Convert.ToString(i.Field<object>("title")),
+                            TafsilMap = tafsiliGroupList.Where(t=> Convert.ToInt32(t.Field<object>("TafsilId")) == Convert.ToInt32(i.Field<object>("id"))).Select(h=> h.Field<object>("full_path").ToString()).FirstOrDefault(),
+                            TitleInAutomateDocument = Convert.ToString(i.Field<object>("automate_document_title")),
+                            IsActive = Convert.ToBoolean(i.Field<object>("active")),
+                            IsCostCenter = Convert.ToBoolean(i.Field<object>("cost_center")),
+                            EntityTypeId = Convert.ToInt32(i.Field<object>("entityId")),
+                            TafsiliGroupBindingString = string.Join(",",tafsiliGroupList.Where(m=> Convert.ToInt32(m.Field<object>("TafsilId")) == Convert.ToInt32(i.Field<object>("id"))).Select(c=> c.Field<object>("title")).ToList())
+                        }).ToList(),
+                        TotalCount = repo.totalCount
+                    };
+
+                }
+            }
+            catch (Exception c)
+            {
+                System.Windows.MessageBox.Show(c.Message);
+                return null;
+            }
+        }
     }
 }

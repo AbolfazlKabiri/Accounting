@@ -16,8 +16,24 @@ namespace Accounting.Views
         {
             InitializeComponent();
             FillEntityComboBoxes();
+            GetTafsilAccounts();
             peopleGroupSelector.Type = Models.Common.SelectorType.PeopleGroup;
             tafsiliGroupSelector.Type = Models.Common.SelectorType.TafsiliGroup;
+        }
+          private void GetTafsilAccounts()
+        {
+            try
+            {
+                using (var controller = new Controllers.TafsilController())
+                {
+                    var result = controller.GetTafsilAccounts();
+                    dtGroupAccount.ItemsSource = result.Body;
+                }
+            }
+            catch (Exception c)
+            {
+                MessageBox.Show(c.Message);
+            }
         }
         private void FillEntityComboBoxes()
         {
@@ -100,6 +116,7 @@ namespace Accounting.Views
                     MessageBox.Show(result.Message);
                     if (result.Status == Models.ActionResult.Success) { }
                         // get Tafsil
+                        GetTafsilAccounts();
                 }
             }
         }
