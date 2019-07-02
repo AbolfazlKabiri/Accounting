@@ -72,6 +72,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\CostCenterController.cs" />
+    <Compile Include="Controllers\FiscalYearController.cs" />
     <Compile Include="Controllers\KolController.cs" />
     <Compile Include="Controllers\MoinController.cs" />
     <Compile Include="Controllers\NatureController.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Models\CostCenter.cs" />
     <Compile Include="Models\CustomColumnHeadersProperty.cs" />
     <Compile Include="Models\EntityModelBinding.cs" />
+    <Compile Include="Models\FiscalYear.cs" />
     <Compile Include="Models\HiddenAttribute.cs" />
     <Compile Include="Models\Kol.cs" />
     <Compile Include="Models\Moin.cs" />
@@ -110,6 +112,9 @@
     <Compile Include="Views\W_EditCostCenter.xaml.cs">
       <DependentUpon>W_EditCostCenter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\W_EditFiscalYear.xaml.cs">
+      <DependentUpon>W_EditFiscalYear.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\W_EditGroup.xaml.cs">
       <DependentUpon>W_EditGroup.xaml</DependentUpon>
     </Compile>
@@ -124,6 +129,9 @@
     </Compile>
     <Compile Include="Views\W_EditTafsiliGroup.xaml.cs">
       <DependentUpon>W_EditTafsiliGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\W_FiscalYear.xaml.cs">
+      <DependentUpon>W_FiscalYear.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\W_Group.xaml.cs">
       <DependentUpon>W_Group.xaml</DependentUpon>
@@ -209,6 +217,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\W_EditFiscalYear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\W_EditGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\W_EditTafsiliGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\W_FiscalYear.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

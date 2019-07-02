@@ -47,6 +47,13 @@
     <system:String x:Key="true">حقیقی</system:String>
     <system:String x:Key="legal">حقوقی</system:String>
     <system:String x:Key="flow">گردش</system:String>
+    <!--Fiscal Year-->
+    <system:String x:Key="fiscal_Title">عنوان :</system:String>
+    <system:String x:Key="fiscal_startDate">تاریخ شروع :</system:String>
+    <system:String x:Key="fiscal_endDate">تاریخ خاتمه :</system:String>
+    <system:String x:Key="fiscal_taxable">مشمول مالیات</system:String>
+    <system:String x:Key="fiscal_taxes">مالیات :</system:String>
+    <system:String x:Key="fiscal_duties">عوارض :</system:String>
     <!--Group Validation-->
     <system:String x:Key="validation_codeIsEmpty">وارد كردن كد حساب الزامي مي باشد</system:String>
     <system:String x:Key="validation_titleIsEmpty">وارد كردن عنوان حساب الزامي مي باشد</system:String>

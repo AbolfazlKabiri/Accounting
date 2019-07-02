@@ -1,0 +1,221 @@
+﻿<Window x:Class="Accounting.Views.W_FiscalYear"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:Accounting.Views"
+        xmlns:shared="clr-namespace:Accounting.Views.Shared"
+        mc:Ignorable="d"
+        Title="W_FiscalYear" Height="750" Width="1024" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None" FlowDirection="RightToLeft" Style="{StaticResource iransans}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <shared:WindowHeader FlowDirection="LeftToRight"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource fiscal_Title}" Margin="10,10,10,0" VerticalAlignment="Top"/>
+                    <TextBox Name="txtTitle" VerticalAlignment="Top" Margin="0,10,10,0" Width="250" />
+                    <Label Content="{StaticResource fiscal_startDate}" Margin="80,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="txtStartDate" VerticalAlignment="Top" Margin="0,10,10,0" Width="80" />
+                    <Label Content="{StaticResource fiscal_endDate}" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="txtEndDate" VerticalAlignment="Top" Margin="0,10,10,0" Width="80" />
+                   
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="{StaticResource fiscal_taxable}" Margin="10,15,0,0" Name="chkTaxable" IsChecked="False" VerticalAlignment="Top"/>
+                    <Label Content="{StaticResource fiscal_taxes}" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="txtTaxes" VerticalAlignment="Top" Margin="0,10,0,0" Width="40" IsEnabled="{Binding ElementName=chkTaxable,Path=IsChecked}"/>
+                    <Label Content="{StaticResource fiscal_duties}" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="txtDuties" VerticalAlignment="Top" Margin="0,10,0,0" Width="40" IsEnabled="{Binding ElementName=chkTaxable,Path=IsChecked}"/>
+                    <CheckBox Content="{StaticResource isInActive}" Name="chkIsInactive" IsChecked="False" Margin="30,15,0,0" VerticalAlignment="Top"/>
+                    <Button Content="{StaticResource save}" BorderThickness="0" Background="#388E3C" Foreground="White" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="400,10,0,2" Name="insertButton" Click="insertButton_Click"/>
+                    <Button Content="{StaticResource cancel}" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="70" Background="Transparent" BorderThickness="0" Margin="5,10,0,2" Name="cancelButton" Click="cancelButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <DataGrid   RowHeight="27" FlowDirection="RightToLeft" BorderThickness= "0" Foreground="#FF1F1F1F" Background="White"  x:Name="dtGroupAccount" AutoGenerateColumns="False" CanUserSortColumns="False"  CanUserAddRows="False" CanUserDeleteRows="False"
+            IsReadOnly="True" 
+            VerticalAlignment="Stretch"  
+            FontSize="13" 
+            RowHeaderWidth="0" GridLinesVisibility="None" 
+            SelectionUnit="FullRow" SelectionMode="Single" HorizontalAlignment="Stretch"
+            RowStyle="{DynamicResource DataGridRowStyle}"        
+            CellStyle="{DynamicResource DataGridCellStyle}"
+            RowDetailsVisibilityMode="VisibleWhenSelected"
+            >
+
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                    </Style>
+
+                    <Style TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Background" Value="#FF4B4A4A" />
+                        <Setter Property="Width" Value="5" />
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+
+
+                    <DataGridTextColumn  Binding="{Binding Id}" Width="50*"  >
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="شناسه"   Foreground="White" FontFamily="IRANSansFaNum"  FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="CodeSearch" TextChanged="SearchTextChange" BorderThickness="0" FontFamily="b traffic" Style="{StaticResource placeHolder}"   VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"   FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+
+
+
+                    <DataGridTextColumn  Binding="{Binding Title}" Width="100*"  >
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="عنوان "   Foreground="White" FontFamily="IRANSansFaNum"  FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="TitleSearch" TextChanged="SearchTextChange" BorderThickness="0" FontFamily="b traffic" Style="{StaticResource placeHolder}"   VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"   FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+
+
+                    <DataGridTextColumn Binding="{Binding StartDate}" Width="50*">
+                        <!-- <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle> -->
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="تاریخ شروع"    Foreground="White" FontFamily="IRANSansFaNum"  FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="MahiatSearch" TextChanged="SearchTextChange" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+
+                    <DataGridTextColumn Binding="{Binding EndDate}" Width="50*">
+                       
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="تاریخ خاتمه"    Foreground="White" FontFamily="IRANSansFaNum" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="FASearchTx" TextChanged="SearchTextChange" GotFocus="FASearchTx_GotFocus" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Taxes}" Width="50*">
+
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="مالیات"    Foreground="White" FontFamily="IRANSansFaNum" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="FASearchTax" TextChanged="SearchTextChange" GotFocus="FASearchTx_GotFocus" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Duties}" Width="50*">
+
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="عوارض"    Foreground="White" FontFamily="IRANSansFaNum" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="FASearchDuties" TextChanged="SearchTextChange" GotFocus="FASearchTx_GotFocus" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Binding="{Binding Status}" Width="50*">
+
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="وضعیت"    Foreground="White" FontFamily="IRANSansFaNum" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="FASearchFiscalYear" TextChanged="SearchTextChange" GotFocus="FASearchTx_GotFocus" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Binding="{Binding PresenterText}" Width="60*">
+                        <DataGridTextColumn.Header >
+                            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Height="30" Background="#106EBE"  />
+                                <TextBlock Text="کاربر"   Foreground="White" FontFamily="IRANSansFaNum" FontSize="14" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
+                                <TextBox x:Name="UserSearch" TextChanged="SearchTextChange" BorderThickness="0" Style="{StaticResource placeHolder}"  VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Stretch" Tag="عبارت جستجو"  Grid.Row="1"  FontFamily="b traffic" FontSize="14" Text="" HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+
+
+
+
+
+
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                            <fa:ImageAwesome Icon="Trash" Width="25" Margin="10,2" MouseLeftButtonDown="removeButton_Click" ToolTip="{StaticResource remove}" Cursor="Hand" Height="25" Foreground="Red"/>
+                            <fa:ImageAwesome Icon="Edit" Width="27" Margin="0,2" MouseLeftButtonDown="updateButton_Click" ToolTip="{StaticResource update}" Cursor="Hand" Height="27" Foreground="ForestGreen"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+
+
+        </Grid>
+    </Grid>
+</Window>
