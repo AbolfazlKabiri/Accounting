@@ -13,6 +13,7 @@ namespace Accounting.Views.Shared
     public partial class UC_Selector : UserControl
     {
         public Models.Common.SelectorType Type { get; set; }
+        public bool MultiSelect { get; set; }
         public UC_Selector()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace Accounting.Views.Shared
                         }
                         break;
                     case Models.Common.SelectorType.TafsiliGroup:
-                         modal = new W_SelectorModal(Models.Common.SelectorType.TafsiliGroup, selectedList,true);
+                         modal = new W_SelectorModal(Models.Common.SelectorType.TafsiliGroup, selectedList,MultiSelect);
                           modal.ShowDialog();
                          if(selectedList.Count > 0)
                          {

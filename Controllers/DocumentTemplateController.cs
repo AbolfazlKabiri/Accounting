@@ -7,23 +7,26 @@ using System.Threading.Tasks;
 
 namespace Accounting.Controllers
 {
-    class TafsilAccountTemplateController:Repository.Repository
+    class DocumentTemplateController:Repository.Repository
     {
-
         /// <summary>
-        /// ایجاد الگوی جدید
+        /// ثبت الگوی سند جدید
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Models.ActionResultModelBinding InsertTafsilAccountTemplate(Models.TafsilAccountTemplateModelBinding model)
+        public Models.ActionResultModelBinding InsertDocumentTemplate(Models.DocumnetTemplateModelBinding model)
         {
             try
             {
-                using (var repo = new Repository.Repository(this, "usp_insertTafsilAccountTemplate"))
+                using (var repo = new Repository.Repository(this, "usp_insertAccountingDocumentTemplate"))
                 {
-                    repo.cmd.Parameters.AddWithValue("@entityId", model.EntityId);
-                    repo.cmd.Parameters.AddWithValue("@tafsiliGroupId", model.TafsiliGroupId);
-                    repo.cmd.Parameters.AddWithValue("@peopleGroupId", model.PeopleGroupId);
+                    
+                    repo.cmd.Parameters.AddWithValue("@title", model.Title);
+                    repo.cmd.Parameters.AddWithValue("@descriptionHead", model.DescriptionHeader);
+                    repo.cmd.Parameters.AddWithValue("@documentTypeId", model.DocumentTypeId);
+                    repo.cmd.Parameters.AddWithValue("@accountCode", model.TafsilCode);
+                    repo.cmd.Parameters.AddWithValue("@natureId", model.NatureId);
+                    repo.cmd.Parameters.AddWithValue("@descriptionRow", model.DescriptionRow);
                     repo.ExecuteNonQuery();
                     return new Models.ActionResultModelBinding
                     {
@@ -42,20 +45,23 @@ namespace Accounting.Controllers
             }
         }
         /// <summary>
-        /// ویرایش الگو
+        /// ویرایش الگوی سند
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Models.ActionResultModelBinding UpdateTafsilAccountTemplate(Models.TafsilAccountTemplateModelBinding model)
+        public Models.ActionResultModelBinding UpdatetDocumentTemplate(Models.DocumnetTemplateModelBinding model)
         {
             try
             {
-                using (var repo = new Repository.Repository(this, "usp_updateTafsilAccountTemplate"))
+                using (var repo = new Repository.Repository(this, "usp_updateAccountingDocumentTemplate"))
                 {
                     repo.cmd.Parameters.AddWithValue("@id", model.Id);
-                    repo.cmd.Parameters.AddWithValue("@entityId", model.EntityId);
-                    repo.cmd.Parameters.AddWithValue("@tafsiliGroupId", model.TafsiliGroupId);
-                    repo.cmd.Parameters.AddWithValue("@peopleGroupId", model.PeopleGroupId);
+                    repo.cmd.Parameters.AddWithValue("@title", model.Title);
+                    repo.cmd.Parameters.AddWithValue("@descriptionHead", model.DescriptionHeader);
+                    repo.cmd.Parameters.AddWithValue("@documentTypeId", model.DocumentTypeId);
+                    repo.cmd.Parameters.AddWithValue("@accountCode", model.TafsilCode);
+                    repo.cmd.Parameters.AddWithValue("@natureId", model.NatureId);
+                    repo.cmd.Parameters.AddWithValue("@descriptionRow", model.DescriptionRow);
                     repo.ExecuteNonQuery();
                     return new Models.ActionResultModelBinding
                     {
@@ -74,15 +80,15 @@ namespace Accounting.Controllers
             }
         }
         /// <summary>
-        /// حذف الگو
+        /// حذف الگوی سند
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Models.ActionResultModelBinding DeleteTafsilAccountTemplate(Models.TafsilAccountTemplateModelBinding model)
+        public Models.ActionResultModelBinding DeletetDocumentTemplate(Models.DocumnetTemplateModelBinding model)
         {
             try
             {
-                using (var repo = new Repository.Repository(this, "usp_deleteTafsilAccountTemplate"))
+                using (var repo = new Repository.Repository(this, "usp_deleteAccountingDocumentTemplate"))
                 {
                     repo.cmd.Parameters.AddWithValue("@id", model.Id);
                     repo.ExecuteNonQuery();
@@ -103,7 +109,7 @@ namespace Accounting.Controllers
             }
         }
         /// <summary>
-        /// دريافت ليست الگوهای تعرف شده
+        /// دريافت ليست الگوی اسناد
         /// </summary>
         /// <param name="_pageNo">
         /// شماره صفحه 
@@ -112,31 +118,32 @@ namespace Accounting.Controllers
         /// تعداد ركوردهاي مدنظر براي مشاهده در خروجي
         /// </param>
         /// <returns></returns>
-        public Models.SelectResultModelBinding<Models.TafsilAccountTemplateModelBinding> GetTafsilAccountTemplateList(short _pageNo = 0,short _seedNumber = 10,string search = null)
+        public Models.SelectResultModelBinding<Models.DocumnetTemplateModelBinding> GettDocumentTemplates(int docTypeId,short _pageNo = 0,short _seedNumber = 10,string search = null)
         {
             try
             {
-                using (var repo = new Repository.Repository(this, "usp_getTafsilAccountTemplateList",true))
+                using (var repo = new Repository.Repository(this, "usp_getTafsilAccountList",true))
                 {
                     pageNo = _pageNo;
                     seedNumber = _seedNumber;
                     
-                    //repo.cmd.Parameters.AddWithValue("@search", search);
+                    repo.cmd.Parameters.AddWithValue("@docTopId", docTypeId);
                     repo.ExecuteAdapter();
                     var info = repo.ds.Tables[0].AsEnumerable();
-                   
-                    return new Models.SelectResultModelBinding<Models.TafsilAccountTemplateModelBinding>
+                    
+                    return new Models.SelectResultModelBinding<Models.DocumnetTemplateModelBinding>
                     {
-                        Body = info.Select(i => new Models.TafsilAccountTemplateModelBinding()
+                        Body = info.Select(i => new Models.DocumnetTemplateModelBinding()
                         {
                             Id = Convert.ToInt32(i.Field<object>("id")),
-                            EntityId = Convert.ToInt32(i.Field<object>("entityTypeId")),
-                            EntityTitle = Convert.ToString(i.Field<object>("entityTypeTitle")),
-                            TafsiliGroupId = Convert.ToInt32(i.Field<object>("tafsiliGroupId")),
-                            TafsiliGroupTitle = Convert.ToString(i.Field<object>("tafsiliGroupTitle")),
-                            PeopleGroupId = Convert.ToInt32(i.Field<object>("peopleGroupId")),
-                            PeopleGroupTitle = Convert.ToString(i.Field<object>("peopleGroupTitle")),
-                            Path = i.Field<object>("path").ToString()
+                            Title = Convert.ToString(i.Field<object>("title")),
+                            TafsilCode = Convert.ToString(i.Field<object>("fk_account_code")),
+                            DescriptionHeader = i.Field<object>("description_head").ToString(),
+                            DescriptionRow = Convert.ToString(i.Field<object>("description_row")),
+                            DocumentTypeId = Convert.ToInt32(i.Field<object>("docTypeId")),
+                            DocumentTypeTitle = Convert.ToString(i.Field<object>("docTypeTitle")),
+                            NatureId = Convert.ToString(i.Field<object>("fk_nature_id")),
+                            NatureTitle = i.Field<object>("natureTitle").ToString()
                         }).ToList(),
                         TotalCount = repo.totalCount
                     };

@@ -21,7 +21,7 @@ namespace Accounting.Views.Shared
             selectorType = _selectorType;
             selectedList = _selectedList;
             LoadInfo();
-            if(!_multiSelect)
+            if(!_multiSelect & selectorType != Models.Common.SelectorType.TafsiliGroup)
             {
                 selectionButtonArea.Visibility = Visibility.Collapsed;
             }
@@ -126,6 +126,13 @@ namespace Accounting.Views.Shared
                         Code = c.Code
                     })
                 );
+                if(selectedList.Count > 1)
+                {
+                    MessageBox.Show("فقط مجاز به انتخاب 1 گروه تفصیل هستید");
+                    selectedList.Clear();
+                    list.ForEach(i=> i.Selected = false);
+                    return;
+                }
             }
             else if(selectorType == Models.Common.SelectorType.PeopleGroup)
             {

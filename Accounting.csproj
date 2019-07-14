@@ -72,6 +72,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\CostCenterController.cs" />
+    <Compile Include="Controllers\DocumentTemplateController.cs" />
     <Compile Include="Controllers\FiscalYearController.cs" />
     <Compile Include="Controllers\KolController.cs" />
     <Compile Include="Controllers\MoinController.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\CostCenter.cs" />
     <Compile Include="Models\CustomColumnHeadersProperty.cs" />
+    <Compile Include="Models\DocumnetTemplateModelBinding.cs" />
     <Compile Include="Models\EntityModelBinding.cs" />
     <Compile Include="Models\FiscalYear.cs" />
     <Compile Include="Models\HiddenAttribute.cs" />
@@ -152,6 +154,9 @@
     </Compile>
     <Compile Include="Views\W_TafsilAccount.xaml.cs">
       <DependentUpon>W_TafsilAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\W_TafsilAccountTemplate.xaml.cs">
+      <DependentUpon>W_TafsilAccountTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\W_TafsiliGroupAccount.xaml.cs">
       <DependentUpon>W_TafsiliGroupAccount.xaml</DependentUpon>
@@ -268,6 +273,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\W_TafsilAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\W_TafsilAccountTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
