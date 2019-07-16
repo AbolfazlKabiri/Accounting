@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Accounting.Views
 {
     /// <summary>
-    /// Interaction logic for W_TafsilAccountTemplate.xaml
+    /// Interaction logic for W_DocumnetTemplate.xaml
     /// </summary>
-    public partial class W_TafsilAccountTemplate : Window
+    public partial class W_DocumnetTemplate : Window
     {
-        public W_TafsilAccountTemplate()
+         public W_DocumnetTemplate()
         {
             InitializeComponent();
-            FillEntityComboBoxes();
+            FillDocumentTypes();
             GetTemplates();
             tafsiliGroupSelector.MultiSelect = false;
             tafsiliGroupSelector.Type = Models.Common.SelectorType.TafsiliGroup;
@@ -35,15 +42,15 @@ namespace Accounting.Views
                 MessageBox.Show(c.Message);
             }
         }
-        private void FillEntityComboBoxes()
+        private void FillDocumentTypes()
         {
             try
             {
-                using (var controller = new Controllers.TafsilController())
+                using (var controller = new Controllers.DocumentTemplateController())
                 {
-                    cmbEntityType.ItemsSource = controller.GetEntities().Body.ToList();
-                    cmbEntityType.DisplayMemberPath = "Title";
-                    cmbEntityType.SelectedValuePath = "Id";
+                    cmbDocumentType.ItemsSource = controller.GettDocumentTypes().Body.ToList();
+                    cmbDocumentType.DisplayMemberPath = "Title";
+                    cmbDocumentType.SelectedValuePath = "Id";
                 }
             }
             catch (Exception c)
@@ -58,7 +65,7 @@ namespace Accounting.Views
             {
                 Models.TafsilAccountTemplateModelBinding newTafsilAccountTemplateObject = new Models.TafsilAccountTemplateModelBinding
                 {
-                    EntityId = cmbEntityType.SelectedValue == null ? default(int) : (int)cmbEntityType.SelectedValue,
+                    EntityId = cmbDocumentType.SelectedValue == null ? default(int) : (int)cmbDocumentType.SelectedValue,
                     TafsiliGroupId = tafsiliGroupSelector.lblValue.Tag != null ? ((List<long>)tafsiliGroupSelector.lblValue.Tag).FirstOrDefault() : 0
                 };
                
@@ -153,11 +160,6 @@ namespace Accounting.Views
                 }
             }
         }
-
-        private void Button_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            W_TafsiliGroupAccount newTafsiliGroupAcc = new W_TafsiliGroupAccount();
-            newTafsiliGroupAcc.ShowDialog();
-        }
     }
 }
+

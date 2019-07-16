@@ -21,9 +21,10 @@ namespace Accounting.Views.Shared
             selectorType = _selectorType;
             selectedList = _selectedList;
             LoadInfo();
-            if(!_multiSelect & selectorType != Models.Common.SelectorType.TafsiliGroup)
+            if(!_multiSelect)
             {
                 selectionButtonArea.Visibility = Visibility.Collapsed;
+                
             }
         }
 
@@ -90,6 +91,19 @@ namespace Accounting.Views.Shared
         {
             try
             {
+                if(!multiSelect)
+                {if(selectorType == Models.Common.SelectorType.TafsiliGroup)
+            {
+            var selected =  (Models.TafsiliGroup)dtSource.SelectedItem;
+            selectedList.Add(
+                    new Models.PublicResultModel {
+
+                        Id = selected.Id,
+                        Title = selected.Title,
+                        Code = selected.Code
+                    });
+                    }
+                    Close();
                 switch (selectorType)
                 {
                     case Models.Common.SelectorType.GroupAccounts:
@@ -106,6 +120,10 @@ namespace Accounting.Views.Shared
                     default:
                         break;
                 }
+                }
+               
+                    
+                
             }
             catch (Exception c)
             {

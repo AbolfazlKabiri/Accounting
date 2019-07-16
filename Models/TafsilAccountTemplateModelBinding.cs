@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Accounting.Models
 {
-    class TafsilAccountTemplateModelBinding:IValidatableObject
+   public class TafsilAccountTemplateModelBinding:IValidatableObject
     {
         public int Id { get; set; }
         public int EntityId { get; set; }

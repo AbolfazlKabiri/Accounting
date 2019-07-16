@@ -113,6 +113,9 @@
     <Compile Include="Views\W_CostCenter.xaml.cs">
       <DependentUpon>W_CostCenter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\W_DocumnetTemplate.xaml.cs">
+      <DependentUpon>W_DocumnetTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\W_EditCostCenter.xaml.cs">
       <DependentUpon>W_EditCostCenter.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,9 @@
     </Compile>
     <Compile Include="Views\W_EditPeopleGroup.xaml.cs">
       <DependentUpon>W_EditPeopleGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\W_EditTafsilAccountTemplate.xaml.cs">
+      <DependentUpon>W_EditTafsilAccountTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\W_EditTafsiliGroup.xaml.cs">
       <DependentUpon>W_EditTafsiliGroup.xaml</DependentUpon>
@@ -220,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\W_DocumnetTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\W_EditCostCenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\W_EditPeopleGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\W_EditTafsilAccountTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

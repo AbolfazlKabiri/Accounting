@@ -63,6 +63,8 @@
     <!--Group Validation-->
     <system:String x:Key="validationPeople_codeIsEmpty">وارد كردن كد الزامي مي باشد</system:String>
     <system:String x:Key="validationPeople_titleIsEmpty">وارد كردن عنوان الزامي مي باشد</system:String>
+    <!--Document Template-->
+    <system:String x:Key="documentTemplate_DocumnetType">نوع سند :</system:String>
     <!-- Font -->
     <Style x:Key="customFont">
         <Setter  Property="TextElement.FontFamily" Value="/Resources/Fonts/#Shabnam"></Setter>

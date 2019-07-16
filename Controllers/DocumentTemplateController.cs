@@ -156,5 +156,48 @@ namespace Accounting.Controllers
                 return null;
             }
         }
+
+         /// <summary>
+        /// دريافت ليست انواع اسناد
+        /// </summary>
+        /// <param name="_pageNo">
+        /// شماره صفحه 
+        /// </param>
+        /// <param name="_seedNumber">
+        /// تعداد ركوردهاي مدنظر براي مشاهده در خروجي
+        /// </param>
+        /// <returns></returns>
+        public Models.SelectResultModelBinding<Models.PublicResultModel> GettDocumentTypes(short _pageNo = 0,short _seedNumber = 10,string search = null)
+        {
+            try
+            {
+                using (var repo = new Repository.Repository(this, "usp_getDocumentTypeList",true))
+                {
+                    pageNo = _pageNo;
+                    seedNumber = _seedNumber;
+                    
+                    
+                    repo.ExecuteAdapter();
+                    var info = repo.ds.Tables[0].AsEnumerable();
+                    
+                    return new Models.SelectResultModelBinding<Models.PublicResultModel>
+                    {
+                        Body = info.Select(i => new Models.PublicResultModel()
+                        {
+                            Id = Convert.ToInt32(i.Field<object>("id")),
+                            Title = Convert.ToString(i.Field<object>("title")),
+                            
+                        }).ToList(),
+                        TotalCount = repo.totalCount
+                    };
+
+                }
+            }
+            catch (Exception c)
+            {
+                System.Windows.MessageBox.Show(c.Message);
+                return null;
+            }
+        }
     }
 }
